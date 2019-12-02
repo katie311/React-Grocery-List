@@ -4,15 +4,16 @@ import ShoppingForm from "./ShoppingForm";
 import Footer from './Footer';
 import './App.css';
 
-// import logo from './logo.svg';
+// I'm not sure how to properly connect the css file
+
+/* QUESTION FOR TA'S: I don't understand the bind requirements. 
+They aren't present in the online lecture, but when we did the 
+example in class we had to add them. My app appears to be working 
+without them, is there a problem that I'm missing? */
 
 class App extends React.Component {
   state = {
-    items: [
-      { id: 1, name: "salad", complete: true, },
-      { id: 2, name: "tonic water", complete: false, },
-      { id: 3, name: "chicken", complete: false, },
-    ], 
+    items:[], 
     filter: 'All' 
   };
 
@@ -64,11 +65,11 @@ class App extends React.Component {
     const { items, filter } = this.state;
     
     return (
-      <div>
+      <div className = "App">
         <List name="Shopping List" items={this.visibleItems()} itemClick={this.handleClick} />
         <ShoppingForm addItem={this.addItem} />
         <br />
-        <Footer filter={filter} setFilter={this.setFilter} />
+        <Footer filter={filter} key={this.state.items.id} setFilter={this.setFilter} />
       </div>
     );
   };
